@@ -55,6 +55,7 @@ public class Grafos {
                     if(created()){
                         LAList.print();
                         IMatrix.print();
+                        print();
                     }
                     menu();
                 case 5:
@@ -208,6 +209,31 @@ public class Grafos {
                 System.out.println("La ruta es: " + answer);
             }
         }        
+    }
+
+    private static void print() {
+        for (int i = 0; i < IMatrix.matrix.length; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println("");
+        for (int i = 0; i < IMatrix.matrix[0].length; i++) {
+            boolean flag = false;
+            String printLine = "";
+            for (int j = 0; j < IMatrix.matrix.length; j++) {
+                if(IMatrix.matrix[j][i] == 0 && !flag){
+                    printLine = printLine + "  ";
+                }else if(IMatrix.matrix[j][i] == 1 && !flag){
+                    printLine = printLine + "|_";
+                    flag = !flag;
+                }else if(IMatrix.matrix[j][i] == 1 && flag){
+                    printLine = printLine + "| ";
+                    flag = !flag;
+                }else if(IMatrix.matrix[j][i] == 0 && flag){
+                    printLine = printLine + "__";
+                }   
+            }
+            System.out.println(printLine);
+        }
     }
 
 }
